@@ -1,0 +1,17 @@
+<form [formGroup]="partForm">
+  <label>
+    course code :
+    <input type="text" formControlName="courseId">
+  </label>
+  <label>
+    part name :
+    <input type="text" formControlName="name">
+  </label>
+
+  <label>
+    description :
+    <input type="text" formControlName="description">
+  </label>
+
+   <button (click)="addPart()">Add Part</button>
+</form>

@@ -14,7 +14,12 @@ export class CourseeditorComponent implements OnInit {
     constructor(db: AngularFirestore) {
         this.courseForm = new FormGroup({
             name: new FormControl(''),
+            author: new FormControl(''),
             price: new FormControl(''),
+            description: new FormControl(''),
+            lecturerId: new FormControl(''),
+            time: new FormControl(''),
+            hotCourse: new FormControl(''),
         });
         this.courseCollection = db.collection('courses');
         this.courses = this.courseCollection.valueChanges();
@@ -29,4 +34,12 @@ export class CourseeditorComponent implements OnInit {
         this.courseCollection.add(this.courseForm.value);
     }
 }
-export interface Course { name: string; }
+export interface Course {
+    name: string;
+    author: string;
+    price: string;
+    description: string;
+    lecturerId: string;
+    time: string;
+    hotCourse: string;
+}

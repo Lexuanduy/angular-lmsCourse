@@ -8,16 +8,18 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CourseeditorComponent } from './courseeditor/courseeditor.component';
+import { ParteditorComponent } from './parteditor/parteditor.component';
+
 @NgModule({
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebase, 'freecodeschoollms'), // imports firebase/app needed for everything
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    AngularFireStorageModule // imports firebase/storage only needed for storage features
-  ],
-  declarations: [ AppComponent, CourseeditorComponent ],
-  bootstrap: [ AppComponent ]
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        AngularFireModule.initializeApp(environment.firebase, 'freecodeschoollms'), // imports firebase/app needed for everything
+        AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+        AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+        AngularFireStorageModule // imports firebase/storage only needed for storage features
+    ],
+    declarations: [AppComponent, CourseeditorComponent, ParteditorComponent],
+    bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

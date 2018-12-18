@@ -1,20 +1,47 @@
 <form [formGroup]="courseForm">
   
   <label>
-    courseName:
+    course name :
     <input type="text" formControlName="name">
   </label>
 
   <label>
-    coursePrice:
+    author :
+    <input type="text" formControlName="author">
+  </label>
+  
+  <label>
+    course price :
     <input type="text" formControlName="price">
+  </label>
+
+  <label>
+    description :
+    <input type="text" formControlName="description">
+  </label>
+
+  <label>
+    lecturer :
+    <input type="text" formControlName="lecturerId">
+  </label>
+
+  <label>
+    time :
+    <input type="text" formControlName="time">
+  </label>
+
+  <label>
+    hot course :
+    <input type="text" formControlName="hotCourse">
   </label>
 
    <button (click)="addCourse()">Add Course</button>
 </form>
-
 <ul>
   <li class="text" *ngFor="let course of courses | async">
-    {{course.name}}
+    <p>Course name: {{course.name}}</p>
+    <p>Author: {{course.author}}</p>
+    <p>Price: {{course.price}}</p>
   </li>
 </ul>
+<app-parteditor></app-parteditor>
