@@ -35,23 +35,51 @@
   <br>
   <br>
 </div> -->
-<div style="text-align:center">
-  <br> course id:
-  <input #courseId>
-  <br> Name:
-  <input #name>
-  <br> Price:
-  <input #description>
-  <br>
-  <button (click)="addPart(courseId.value, name.value, description.value)">Add some parts</button>
-  <br>
-  <div style="text-align:center;display:unset;">
-    List of Parts:
-    <ul>
-      <li *ngFor="let part of parts | async">
-        <p>Part name: {{ part.name }}</p>
-        <p>Part description: {{ part.description }}</p>
-      </li>
-    </ul>
+
+
+<form [formGroup]="myForm1">
+
+  <div formArrayName="phone1s">
+
+    <div *ngFor="let phone1 of phone1Forms.controls; let i=index" [formGroupName]="i">
+
+      <!-- <input formControlName="area">
+      <input formControlName="prefix">
+      <input formControlName="line"> -->
+
+      <div style="text-align:center">
+        <br> course name:
+        <input #courseId>
+        <br> Name:
+        <input #name>
+        <br> Description:
+        <input #description>
+        <br>
+        <!-- add lesson -->
+        <h3>add lesson</h3>
+        <br> lesson name:
+        <input #lessonName>
+        <br> lesson description:
+        <input #lessonDescription>
+        <!-- end -->
+        <button (click)="addPart(courseId.value, name.value, description.value, lessonName.value, lessonDescription.value)">Save</button>
+        <br>
+        <div style="text-align:center;display:unset;">
+          List of Parts:
+          <ul>
+            <li *ngFor="let part of parts | async">
+              <p>Part name: {{ part.name }}</p>
+              <p>Part description: {{ part.description }}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <button (click)="deletePhone1(i)">Delete</button>
+
+    </div>
   </div>
-</div>
+
+  <button (click)="addPhone1()">Add Part</button>
+
+</form>

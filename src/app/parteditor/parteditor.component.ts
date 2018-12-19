@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
@@ -12,7 +12,8 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 export class ParteditorComponent implements OnInit {
     _db: AngularFirestore;
     parts: Observable<any[]>;
-    constructor(db: AngularFirestore) {
+    myForm1: FormGroup;
+    constructor(private fb: FormBuilder, db: AngularFirestore) {
         this.parts = db.collection('parts').valueChanges();
         this._db = db;
     }
@@ -26,13 +27,34 @@ export class ParteditorComponent implements OnInit {
     //         this.parts = this.partCollection.valueChanges();
     //     }
     //     private partCollection: AngularFirestoreCollection<Part>;
-    partForm: FormGroup;
+    // partForm: FormGroup;
     //     parts: Observable<Part[]>;
     ngOnInit() {
+        this.myForm1 = this.fb.group({
+            phone1s: this.fb.array([])
+        });
     }
-    addPart(sCourseId: string, sName: string, sDescription: string) {
+    get phone1Forms() {
+        return this.myForm1.get('phone1s') as FormArray;
+    }
+    addPhone1() {
+
+        const phone1 = this.fb.group({
+            // area: [],
+            // prefix: [],
+            // line: [],
+        });
+
+        this.phone1Forms.push(phone1);
+    }
+
+    deletePhone1(i) {
+        this.phone1Forms.removeAt(i);
+    }
+    addPart(sCourseId: string, sName: string, sDescription: string, sLessonName: string, sLessonDescription: string) {
         const partsCollection = this._db.collection<Part>('parts');
-        partsCollection.add({ courseId: sCourseId, name: sName, description: sDescription });
+        partsCollection.add({ courseName: sCourseId, name: sName, description: sDescription });
+        partsCollection.doc('').collection('lessons').add({ name: sLessonName, description: sLessonDescription});
     }
     //   addPart() {
     //         console.log(this.partForm.value);
@@ -41,7 +63,7 @@ export class ParteditorComponent implements OnInit {
 }
 
 export interface Part {
-    courseId: string;
+    courseName: string;
     name: string;
     description: string;
 }
