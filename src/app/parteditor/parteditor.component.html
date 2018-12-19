@@ -1,17 +1,57 @@
-<form [formGroup]="partForm">
-  <label>
-    course code :
-    <input type="text" formControlName="courseId">
-  </label>
-  <label>
-    part name :
-    <input type="text" formControlName="name">
-  </label>
+<!-- <h2>add part course</h2>
+<div ng-app="angularjs-starter" ng-controller="MainCtrl">
+  <ul class="list-group">
+    <li class="list-group-item" data-ng-repeat="choice in choices">
+      <div class="col-sm-2">
+        <select class="form-control" ng-model="choice.type" ng-options="item for item in selectOptions">
+        </select>
+      </div>
+      <div class="col-sm-9">
+        <input class="form-control" type="text" ng-model="choice.name" name="" placeholder="Enter mobile number">
+        <form [formGroup]="partForm">
+          <label>
+            course name :
+            <input type="text" formControlName="courseId">
+          </label>
+          <label>
+            part name :
+            <input type="text" formControlName="name">
+          </label>
 
-  <label>
-    description :
-    <input type="text" formControlName="description">
-  </label>
+          <label>
+            description :
+            <input type="text" formControlName="description">
+          </label>
 
-   <button (click)="addPart()">Add Part</button>
-</form>
+          <button (click)="addPart()">Add Part</button>
+        </form>
+      </div>
+      <button class="btn btn-danger" ng-click="removeChoice(choice.id)" ng-if="choice.id!=index">-</button>
+      <button class="btn btn-danger" ng-click="addNewChoice()" ng-if="choice.id===index">+</button>
+    </li>
+  </ul>
+  <br>
+  <button class="btn btn-primary" ng-click="addNewChoice()">Add fields</button>
+  <br>
+  <br>
+</div> -->
+<div style="text-align:center">
+  <br> course id:
+  <input #courseId>
+  <br> Name:
+  <input #name>
+  <br> Price:
+  <input #description>
+  <br>
+  <button (click)="addPart(courseId.value, name.value, description.value)">Add some parts</button>
+  <br>
+  <div style="text-align:center;display:unset;">
+    List of Parts:
+    <ul>
+      <li *ngFor="let part of parts | async">
+        <p>Part name: {{ part.name }}</p>
+        <p>Part description: {{ part.description }}</p>
+      </li>
+    </ul>
+  </div>
+</div>
