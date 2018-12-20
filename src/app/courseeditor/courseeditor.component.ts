@@ -21,12 +21,19 @@ export class CourseeditorComponent implements OnInit {
             time: new FormControl(''),
             hotCourse: new FormControl(''),
         });
-        this.courseCollection = db.collection('courses');
+        this.courseCollection = db.collection('courses', ref => ref.where('name', '==', 'C#'));
+        this.partCollection = db.collection('parts', ref => ref.where('courseName', '==', 'C#').where('name', '==', 'Phần 1'));
         this.courses = this.courseCollection.valueChanges();
+        this.parts = this.partCollection.valueChanges();
+        this.lessons = db.collection('parts', ref => ref.where('courseName', '==', 'C#'))
+            .doc('C#Part1').collection('lessons').valueChanges();
     }
     private courseCollection: AngularFirestoreCollection<Course>;
+    private partCollection: AngularFirestoreCollection<Part>;
     courseForm: FormGroup;
     courses: Observable<Course[]>;
+    parts: Observable<Part[]>;
+    lessons: Observable<any[]>;
     ngOnInit() {
     }
     addCourse() {
@@ -42,4 +49,9 @@ export interface Course {
     lecturerId: string;
     time: string;
     hotCourse: string;
+}
+export interface Part {
+    courseName: string;
+    name: string;
+    description;
 }

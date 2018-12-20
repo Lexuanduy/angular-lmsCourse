@@ -40,7 +40,17 @@
 </form>
 <ul>
   <li class="text" *ngFor="let course of courses | async">
-    <p>Course name: {{course.name}}</p>
+    <p>Course : {{course.name}}</p>
+    <ul>
+      <li class="text" *ngFor="let part of parts | async">
+        <p>{{part.name}}: {{part.description}}</p>
+        <ul>
+          <li class="text" *ngFor="let lesson of lessons | async">
+            <p>{{lesson.name}}: {{lesson.description}}</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </li>
 </ul>
 

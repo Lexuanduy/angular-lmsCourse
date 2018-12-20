@@ -1,53 +1,13 @@
-<!-- <h2>add part course</h2>
-<div ng-app="angularjs-starter" ng-controller="MainCtrl">
-  <ul class="list-group">
-    <li class="list-group-item" data-ng-repeat="choice in choices">
-      <div class="col-sm-2">
-        <select class="form-control" ng-model="choice.type" ng-options="item for item in selectOptions">
-        </select>
-      </div>
-      <div class="col-sm-9">
-        <input class="form-control" type="text" ng-model="choice.name" name="" placeholder="Enter mobile number">
-        <form [formGroup]="partForm">
-          <label>
-            course name :
-            <input type="text" formControlName="courseId">
-          </label>
-          <label>
-            part name :
-            <input type="text" formControlName="name">
-          </label>
-
-          <label>
-            description :
-            <input type="text" formControlName="description">
-          </label>
-
-          <button (click)="addPart()">Add Part</button>
-        </form>
-      </div>
-      <button class="btn btn-danger" ng-click="removeChoice(choice.id)" ng-if="choice.id!=index">-</button>
-      <button class="btn btn-danger" ng-click="addNewChoice()" ng-if="choice.id===index">+</button>
-    </li>
-  </ul>
-  <br>
-  <button class="btn btn-primary" ng-click="addNewChoice()">Add fields</button>
-  <br>
-  <br>
-</div> -->
-
-
+<h2>
+  add part course</h2>
 <form [formGroup]="myForm1">
 
   <div formArrayName="phone1s">
 
     <div *ngFor="let phone1 of phone1Forms.controls; let i=index" [formGroupName]="i">
-
-      <!-- <input formControlName="area">
-      <input formControlName="prefix">
-      <input formControlName="line"> -->
-
       <div style="text-align:center">
+        <br> part id:
+        <input #partId>
         <br> course name:
         <input #courseId>
         <br> Name:
@@ -55,31 +15,32 @@
         <br> Description:
         <input #description>
         <br>
-        <!-- add lesson -->
-        <h3>add lesson</h3>
-        <br> lesson name:
-        <input #lessonName>
-        <br> lesson description:
-        <input #lessonDescription>
-        <!-- end -->
-        <button (click)="addPart(courseId.value, name.value, description.value, lessonName.value, lessonDescription.value)">Save</button>
-        <br>
-        <div style="text-align:center;display:unset;">
-          List of Parts:
-          <ul>
-            <li *ngFor="let part of parts | async">
-              <p>Part name: {{ part.name }}</p>
-              <p>Part description: {{ part.description }}</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-      
-      <button (click)="deletePhone1(i)">Delete</button>
 
+        <!-- dynamic lesson form -->
+        <form [formGroup]="myForm">
+          <div formArrayName="phones">
+            <div *ngFor="let phone of phoneForms.controls; let i=index" [formGroupName]="i">
+              <!-- add lesson -->
+              <h3>add lesson</h3>
+              <br> lesson id:
+              <input #lessonId>
+              <br> lesson name:
+              <input #lessonName>
+              <br> lesson description:
+              <input #lessonDescription>
+              <br>
+              <!-- end -->
+              <button (click)="addPart( partId.value, courseId.value, name.value, description.value, lessonId.value, lessonName.value, lessonDescription.value)">Save</button>
+              <button mat-raised-button color="warn" (click)="deletePhone(i)">Delete Lesson</button>
+            </div>
+          </div>
+          <button mat-raised-button color="primary" (click)="addPhone()">Add Lesson</button>
+        </form>
+        <!-- end -->
+
+      </div>
+      <button (click)="deletePhone1(i)">Delete</button>
     </div>
   </div>
-
   <button (click)="addPhone1()">Add Part</button>
-
 </form>
