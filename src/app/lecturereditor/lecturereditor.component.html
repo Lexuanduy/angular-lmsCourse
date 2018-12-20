@@ -1,0 +1,26 @@
+<h2>add lecturer</h2>
+<label>
+  Lectuter name:
+  <input #name>
+</label>
+<label>
+  Email:
+  <input #userId>
+</label>
+<label>
+  Lectuter education:
+  <input #education>
+</label>
+<label>
+  Lectuter experience:
+  <input #experience>
+</label>
+<label>
+  Lectuter position:
+  <input #position>
+</label>
+<label>
+  Lectuter time:
+  <input type="number" #lectureTime>
+</label>
+<button (click)="addLecturer( userId.value, name.value, education.value, experience.value, position.value, lectureTime.value)">Save</button>

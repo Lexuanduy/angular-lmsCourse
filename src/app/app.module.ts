@@ -9,7 +9,8 @@ import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CourseeditorComponent } from './courseeditor/courseeditor.component';
 import { ParteditorComponent } from './parteditor/parteditor.component';
-
+import { LecturereditorComponent } from './lecturereditor/lecturereditor.component';
+import { RouterModule, Routes } from '@angular/router';
 @NgModule({
     imports: [
         BrowserModule,
@@ -19,7 +20,7 @@ import { ParteditorComponent } from './parteditor/parteditor.component';
         AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
         AngularFireStorageModule // imports firebase/storage only needed for storage features
     ],
-    declarations: [AppComponent, CourseeditorComponent, ParteditorComponent],
+    declarations: [AppComponent, CourseeditorComponent, ParteditorComponent, LecturereditorComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

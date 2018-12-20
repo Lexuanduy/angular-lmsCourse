@@ -75,7 +75,3 @@ export interface Part {
     description: string;
 }
 
-export interface Lesson {
-    name: string;
-    description: string;
-}

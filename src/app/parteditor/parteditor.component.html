@@ -6,14 +6,42 @@
 
     <div *ngFor="let phone1 of phone1Forms.controls; let i=index" [formGroupName]="i">
       <div style="text-align:center">
-        <br> part id:
-        <input #partId>
-        <br> course name:
-        <input #courseId>
-        <br> Name:
-        <input #name>
-        <br> Description:
-        <input #description>
+
+        <!-- test -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">part id</span>
+          </div>
+          <input type="text" class="form-control" placeholder="part id" aria-label="part id" aria-describedby="basic-addon1" #partId>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">course name</span>
+          </div>
+          <input type="text" class="form-control" placeholder="course name" aria-label="course name" aria-describedby="basic-addon1"
+            #courseId>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">course name</span>
+          </div>
+          <input type="text" class="form-control" placeholder="name" aria-label="name" aria-describedby="basic-addon1" #name>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">description</span>
+          </div>
+          <input type="text" class="form-control" placeholder="description" aria-label="description" aria-describedby="basic-addon1" #description>
+        </div>
+        <!-- end -->
+        <!-- <br> part id:
+        <input #partId> -->
+        <!-- <br> course name:
+        <input #courseId> -->
+        <!-- <br> Name:
+        <input #name> -->
+        <!-- <br> Description:
+        <input #description> -->
         <br>
 
         <!-- dynamic lesson form -->
@@ -34,13 +62,15 @@
               <button mat-raised-button color="warn" (click)="deletePhone(i)">Delete Lesson</button>
             </div>
           </div>
-          <button mat-raised-button color="primary" (click)="addPhone()">Add Lesson</button>
+          <button mat-raised-button class="btn btn-success" (click)="addPhone()">Add Lesson</button>
         </form>
         <!-- end -->
 
       </div>
-      <button (click)="deletePhone1(i)">Delete</button>
+      <button class="btn btn-danger" (click)="deletePhone1(i)">Delete</button>
     </div>
   </div>
-  <button (click)="addPhone1()">Add Part</button>
+  <button class="btn btn-primary" (click)="addPhone1()">Add Part</button>
 </form>
+
+
