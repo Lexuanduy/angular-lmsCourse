@@ -11,14 +11,19 @@ import { CourseeditorComponent } from './courseeditor/courseeditor.component';
 import { ParteditorComponent } from './parteditor/parteditor.component';
 import { LecturereditorComponent } from './lecturereditor/lecturereditor.component';
 import { RouterModule, Routes } from '@angular/router';
+const routes: Routes = [
+  { path: 'course/new', component: CourseeditorComponent },
+  { path: 'lecturer/new', component: LecturereditorComponent }
+];
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         AngularFireModule.initializeApp(environment.firebase, 'freecodeschoollms'), // imports firebase/app needed for everything
         AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-        AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-        AngularFireStorageModule // imports firebase/storage only needed for storage features
+        AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+        AngularFireStorageModule,
+        RouterModule.forRoot(routes)
     ],
     declarations: [AppComponent, CourseeditorComponent, ParteditorComponent, LecturereditorComponent],
     bootstrap: [AppComponent]
