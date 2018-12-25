@@ -1,55 +1,57 @@
 <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Home admin</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['course/new']">Course</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['lecturer/new']">Lecturer</a>
-          </li>
-          <li class="nav-item">
-            <a (click)="login()" class="nav-link">Login</a>
-          </li>
-          <ng-template #showLogin>
-          <li class="nav-item" *ngIf="afAuth.user | async as user; else showLogin">
-            <a class="nav-link">Hello {{ user.displayName }}</a>
-          </li>
-          </ng-template>
-          <li class="nav-item">
-            <a (click)="logout()" class="nav-link" >Logout</a>
-          </li>
-        </ul>
-      </div>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="['/']">Home admin</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a id="course" class="nav-link" [routerLink]="['course/new']">Course</a>
+        </li>
+        <li class="nav-item">
+          <a id="lecturer" class="nav-link" [routerLink]="['lecturer/register']">Lecturer</a>
+        </li>
+        <li class="nav-item">
+          <a id="login" (click)="login()" class="nav-link">Login</a>
+        </li>
+        <li class="nav-item">
+          <a id="logout" (click)="logout()" class="nav-link">Logout</a>
+        </li>
+        <li class="nav-item" *ngIf="afAuth.user | async as user; else showLogin">
+          <a class="nav-link">{{ user.displayName }}</a>
+        </li>
+      </ul>
     </div>
-  </nav>
-  <!-- Page Header -->
-  <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>Clean Blog</h1>
-            <span class="subheading">A Blog Theme by Start Bootstrap</span>
-          </div>
+  </div>
+</nav>
+<!-- Page Header -->
+<header id="backgroundImg" class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1>Wellcome!</h1>
+          <span class="subheading">Course management page</span>
         </div>
       </div>
     </div>
-  </header>
+  </div>
+</header>
+
+<!-- <app-courseeditor></app-courseeditor> -->
 
 
-<div *ngIf="afAuth.user | async as user; else showLogin">
-  <!-- <h1 align="center">Hello {{ user.displayName }}!</h1>
+<hr>
+
+<!-- <div *ngIf="afAuth.user | async as user; else showLogin"> -->
+<!-- <h1 align="center">Hello {{ user.displayName }}!</h1>
   <div class="button_cont" align="center"><a (click)="logout()" class="example_o">Logout</a></div> -->
-</div>
+<!-- </div> -->
 <ng-template #showLogin>
   <!-- <h1>Please login.</h1>
   <button (click)="login()">Login with Google</button> -->
@@ -61,5 +63,5 @@
 <li class="nav-item">
   <a class="nav-link" [routerLink]="['lecturer/new']">Lecturer Register</a>
 </li> -->
-<!-- <app-courseeditor></app-courseeditor> -->
+
 <router-outlet></router-outlet>

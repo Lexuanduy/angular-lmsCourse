@@ -13,7 +13,7 @@ import { LecturereditorComponent } from './lecturereditor/lecturereditor.compone
 import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: 'course/new', component: CourseeditorComponent },
-  { path: 'lecturer/new', component: LecturereditorComponent }
+  { path: 'lecturer/register', component: LecturereditorComponent }
 ];
 @NgModule({
     imports: [

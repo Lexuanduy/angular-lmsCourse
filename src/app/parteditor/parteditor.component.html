@@ -1,10 +1,7 @@
-<h2>
-  add part course</h2>
 <form [formGroup]="myForm1">
-
   <div formArrayName="phone1s">
-
     <div *ngFor="let phone1 of phone1Forms.controls; let i=index" [formGroupName]="i">
+      <h4>Part course</h4>
       <div style="text-align:center">
 
         <!-- test -->
@@ -12,26 +9,25 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">part id</span>
           </div>
-          <input type="text" class="form-control" placeholder="part id" aria-label="part id" aria-describedby="basic-addon1" #partId>
+          <input type="text" class="form-control" aria-label="part id" aria-describedby="basic-addon1" #partId>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">course name</span>
           </div>
-          <input type="text" class="form-control" placeholder="course name" aria-label="course name" aria-describedby="basic-addon1"
-            #courseId>
+          <input type="text" class="form-control" aria-label="course name" aria-describedby="basic-addon1" #courseId>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">course name</span>
+            <span class="input-group-text" id="basic-addon1">part name</span>
           </div>
-          <input type="text" class="form-control" placeholder="name" aria-label="name" aria-describedby="basic-addon1" #name>
+          <input type="text" class="form-control" aria-label="name" aria-describedby="basic-addon1" #name>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">description</span>
           </div>
-          <input type="text" class="form-control" placeholder="description" aria-label="description" aria-describedby="basic-addon1" #description>
+          <input type="text" class="form-control" aria-label="description" aria-describedby="basic-addon1" #description>
         </div>
         <!-- end -->
         <!-- <br> part id:
@@ -45,32 +41,51 @@
         <br>
 
         <!-- dynamic lesson form -->
-        <form [formGroup]="myForm">
+        <form [formGroup]="myForm" class="mb-3">
           <div formArrayName="phones">
-            <div *ngFor="let phone of phoneForms.controls; let i=index" [formGroupName]="i">
+            <div *ngFor="let phone of phoneForms.controls; let i=index" [formGroupName]="i" class="formLesson mb-3">
               <!-- add lesson -->
-              <h3>add lesson</h3>
-              <br> lesson id:
-              <input #lessonId>
-              <br> lesson name:
-              <input #lessonName>
-              <br> lesson description:
-              <input #lessonDescription>
-              <br>
+              <h5>Lesson course</h5>
+              <!-- <br> lesson id:
+              <input #lessonId> -->
+
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">lesson id</span>
+                </div>
+                <input type="text" class="form-control" aria-label="lesson id" aria-describedby="basic-addon1" #lessonId>
+              </div>
+              <!-- <br> lesson name:
+              <input #lessonName> -->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">lesson name</span>
+                </div>
+                <input type="text" class="form-control" aria-label="lesson name" aria-describedby="basic-addon1" #lessonName>
+              </div>
+
+              <!-- <br> lesson description:
+              <input #lessonDescription> -->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">lesson description</span>
+                </div>
+                <input type="text" class="form-control" aria-label="lesson description" aria-describedby="basic-addon1" #lessonDescription>
+              </div>
               <!-- end -->
-              <button (click)="addPart( partId.value, courseId.value, name.value, description.value, lessonId.value, lessonName.value, lessonDescription.value)">Save</button>
-              <button mat-raised-button color="warn" (click)="deletePhone(i)">Delete Lesson</button>
+              <!-- <button (click)="addPart( partId.value, courseId.value, name.value, description.value, lessonId.value, lessonName.value, lessonDescription.value)">Save</button> -->
+              <button mat-raised-button class="btn btn-outline-success mr-3" (click)="addPart( partId.value, courseId.value, name.value, description.value, lessonId.value, lessonName.value, lessonDescription.value)">Save</button>
+
+              <button mat-raised-button class="btn btn-outline-secondary" (click)="deletePhone(i)">Delete Lesson</button>
             </div>
           </div>
-          <button mat-raised-button class="btn btn-success" (click)="addPhone()">Add Lesson</button>
+          <button mat-raised-button class="btn btn-outline-info" (click)="addPhone()">Add Lesson</button>
         </form>
         <!-- end -->
 
       </div>
-      <button class="btn btn-danger" (click)="deletePhone1(i)">Delete</button>
+      <button class="btn btn-outline-dark mb-3" (click)="deletePhone1(i)">Delete</button>
     </div>
   </div>
-  <button class="btn btn-primary" (click)="addPhone1()">Add Part</button>
+  <button class="btn btn-outline-primary" (click)="addPhone1()">Add Part</button>
 </form>
-
-

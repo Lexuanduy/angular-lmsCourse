@@ -36,6 +36,7 @@ export class CourseeditorComponent implements OnInit {
     lessons: Observable<any[]>;
     ngOnInit() {
     }
+
     addCourse() {
         console.log(this.courseForm.value);
         this.courseCollection.add(this.courseForm.value);
