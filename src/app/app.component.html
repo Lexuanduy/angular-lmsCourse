@@ -1,67 +1,299 @@
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-  <div class="container">
-    <a class="navbar-brand" [routerLink]="['/']">Home admin</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      Menu
-      <i class="fas fa-bars"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a id="course" class="nav-link" [routerLink]="['course/new']">Course</a>
-        </li>
-        <li class="nav-item">
-          <a id="lecturer" class="nav-link" [routerLink]="['lecturer/register']">Lecturer</a>
-        </li>
-        <li class="nav-item">
-          <a id="login" (click)="login()" class="nav-link">Login</a>
-        </li>
-        <li class="nav-item">
-          <a id="logout" (click)="logout()" class="nav-link">Logout</a>
-        </li>
-        <li class="nav-item" *ngIf="afAuth.user | async as user; else showLogin">
-          <a class="nav-link">{{ user.displayName }}</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<!-- Page Header -->
-<header id="backgroundImg" class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
-          <h1>Wellcome!</h1>
-          <span class="subheading">Course management page</span>
+<!-- MAIN PAGE CONTAINER -->
+<div class="container body">
+  <div class="main_container">
+    <!-- LEFT PRIMARY NAVIGATION -->
+    <div class="col-md-3 left_col">
+      <div class="scroll-view">
+        <div class="navbar nav_title">
+          <h1 class="logo_wrapper">
+            <a href="index.html" class="site_logo">
+              <img class="logo" src="assets/images/cryptic-logo.png" alt="cryptic logo">
+              <span class="logo-text">Cryptic</span>
+            </a>
+          </h1>
         </div>
+        <div class="clearfix"></div>
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+          <div class="menu_section">
+            <h3>General</h3>
+            <div class="clearfix"></div>
+            <ul class="nav side-menu">
+              <li class="active">
+                <a [routerLink]="['/']">
+                  <i class="icon-home icons"></i>
+                  <span>Home</span>
+                  <span class="fa fa-angle-up"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+
+          <div class="menu_section">
+            <h3>Pages</h3>
+            <ul class="nav side-menu">
+              <li id="liLogin">
+                <a title="Login">
+                  <i class="icon-user-follow icons"></i>
+                  <span id="login" (click)="login()">Login with google</span>
+                  <span class="fa fa-angle-down"></span>
+                </a>
+              </li>
+
+              <!-- <li class="nav-item">
+                <a id="logout" (click)="logout()" class="nav-link">Logout</a>
+              </li> -->
+              <li class="nav-item" *ngIf="afAuth.user | async as user; else showLogin">
+                <!-- <a>{{ user.displayName }}</a> -->
+                <a>
+                  <i class="icon-user-follow icons"></i>
+                  <span>{{ user.displayName }}</span>
+                </a>
+              </li>
+
+              <li class="active current-page">
+                <a [routerLink]="['course/new']">
+                  <i class="icon-note icons"></i>
+                  <span>Create Course</span>
+                </a>
+              </li>
+              <li class="">
+                <a [routerLink]="['lecturer/register']">
+                  <i class="icon-note icons"></i>
+                  <span>Register Lecturer</span>
+                  <span class="fa fa-angle-down"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- /sidebar menu -->
+        <!-- /menu footer buttons -->
+        <div class="sidebar-footer hidden-small">
+          <a data-toggle="tooltip" data-placement="top" title="Settings">
+            <span class="icon-settings icons" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" id="btnFullscreen" data-placement="top" title="FullScreen">
+            <span class="icon-size-fullscreen icons" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="Lock">
+            <span class="icon-eye icons" aria-hidden="true"></span>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="Logout" id="logout" (click)="logout()">
+            <span class="icon-power icons" aria-hidden="true"></span>
+          </a>
+        </div>
+        <!-- /menu footer buttons -->
       </div>
     </div>
+    <!-- TOP SECONDARY NAVIGATION -->
+    <div class="top_nav">
+      <div class="nav_menu">
+        <ul class="nav navbar-nav navbar-left">
+          <li class="toggle-li">
+            <div class="nav toggle burger-nav">
+              <a id="menu_toggle">
+                <div class="burger">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </a>
+            </div>
+          </li>
+
+          <li class="button-night-mode">Night Mode
+            <button type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="true" autocomplete="off">
+              <div class="handle"></div>
+            </button>
+          </li>
+        </ul>
+        <!-- top menu ul -->
+        <ul class="nav navbar-nav navbar-right">
+          <li class="">
+            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <img src="assets/images/profile-pic.jpg" alt="">
+            </a>
+            <ul class="dropdown-menu dropdown-usermenu pull-right">
+              <li>
+                <a href="javascript:;"> Profile</a>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <span class="badge bg-red pull-right">50%</span>
+                  <span>Settings</span>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;">Help</a>
+              </li>
+              <li>
+                <a id="liLogout" (click)="logout()">
+                  <i class="fa fa-sign-out pull-right"></i> Log Out</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="search-wrap">
+            <a href="javascript:;" id="btn-search" class="search-nav">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- PAGE CONTENT -->
+    <div class="right_col" role="main">
+      <div class="clearfix"></div>
+      <div class="header-title-breadcrumb element-box-shadow">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-7 col-sm-6 col-xs-12 text-left">
+              <h3>Create courses including parts and lessons !</h3>
+            </div>
+            <div class="col-md-5 col-sm-6 col-xs-12 hide-on-tablet">
+              <ol class="breadcrumb text-right">
+                <li>
+                  <a href="index.html">Home</a>
+                </li>
+                <li class="active">Invoice</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="spacer_30"></div>
+      <div class="clearfix"></div>
+      <div class="panel panel-default element-box-shadow">
+
+        <app-courseeditor></app-courseeditor>
+        <!-- <div class="col-md-6">
+                  <h3 class="invoice-form-title text-bold margin_left_right_30">Shipping address</h3>
+                  <form class="margin_left_right_30">
+                    <fieldset>
+                      <div class="form-group">
+                        <label for="inputName" class="form-control-label">name</label>
+                        <input class="form-control input-type-1" id="inputName" placeholder="James Stones" type="text">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputStreet" class="form-control-label">street</label>
+                        <input class="form-control input-type-1" id="inputStreet" placeholder="9947 Harwin Drive, Suite L" type="text">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputCity" class="form-control-label">city</label>
+                        <input class="form-control input-type-1" id="inputCity" placeholder="new york" type="text">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputState" class="form-control-label">state</label>
+                        <input class="form-control input-type-1" id="inputState" placeholder="california" type="text">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputPostCode" class="form-control-label">post code</label>
+                        <input class="form-control input-type-1" id="inputPostCode" placeholder="880022" type="text">
+                      </div>
+                    </fieldset>
+                  </form>
+                </div> -->
+        <!-- <div class="col-md-6">
+                  <h3 class="invoice-form-title text-bold margin_left_right_30">Payment Informations</h3>
+                  <form class="margin_left_right_30">
+                    <fieldset>
+                      <div class="form-group">
+                        <label for="inputCardName" class="form-control-label">Card name</label>
+                        <input class="form-control input-type-1" id="inputCardName" placeholder="Visa" type="text">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputCardNumber" class="form-control-label">Card Number</label>
+                        <input class="form-control input-type-1" id="inputCardNumber" placeholder="****332" type="text">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputExpDate" class="form-control-label">Exp Date</label>
+                        <input class="form-control input-type-1" id="inputExpDate" placeholder="09/2020" type="text">
+                      </div>
+                    </fieldset>
+                  </form>
+                </div> -->
+        <!-- <div class="col-md-6">
+                  <h3 class="invoice-form-title text-bold margin_left_right_30">Order Preferences</h3>
+                  <form class="margin_left_right_30">
+                    <fieldset>
+                      <div class="form-group invoice-form-grup">
+                        <label for="inputGift" class="form-control-label">Gift</label>
+                        <div class="select-form">
+                          <select class="form-control input-type-1" id="inputGift">
+                            <option>Yes</option>
+                            <option>No</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group invoice-form-grup">
+                        <label for="inputExpressDelivery" class="form-control-label">Express Delivery</label>
+                        <div class="select-form">
+                          <select class="form-control input-type-1" id="inputExpressDelivery">
+                            <option>Yes</option>
+                            <option>No</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group invoice-form-grup">
+                        <label for="inputInsurance" class="form-control-label">Insurance</label>
+                        <div class="select-form">
+                          <select class="form-control input-type-1" id="inputInsurance">
+                            <option>Yes</option>
+                            <option>No</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group invoice-form-grup">
+                        <label for="inputCoupon" class="form-control-label">Coupon</label>
+                        <div class="select-form">
+                          <select class="form-control input-type-1" id="inputCoupon">
+                            <option>Yes</option>
+                            <option>No</option>
+                          </select>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div> -->
+
+      </div>
+      <a href="#" class="scrollToTop">
+        <i class="fa fa-chevron-up text-white" aria-hidden="true"></i>
+      </a>
+    </div>
+    <!-- END - PAGE CONTENT -->
+    <!-- PAGE FOOTER -->
+    <footer>
+      <div class="pull-right">
+        Cryptic - Admin Template by
+        <a href="https://themeforest.net/user/modeltheme/portfolio">ModelTheme</a>
+      </div>
+      <div class="clearfix"></div>
+    </footer>
   </div>
-</header>
+  <!-- RIGHT SIDE SIDEBAR NAVIGATION -->
+  <nav class="st-menu st-effect">
+    <span class="fa fa-times close-sidebar"></span>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </nav>
+</div>
+<!-- RIGHT SIDE: SEARCH FORM -->
+<div class="search search-main">
+  <div id="btn-search-close" class="btn btn--search-close" aria-label="Close search form">
+    <i class="fa fa-times"></i>
+  </div>
+  <!-- <form class="search__form" action="search.html">
+          <input class="search__input" name="search" type="search" placeholder="Hash, transactions..." autocomplete="off" autocapitalize="off" spellcheck="false" />
+          <span class="search__info">Hit enter to search or ESC to close</span>
+        </form> -->
+</div>
 
-<!-- <app-courseeditor></app-courseeditor> -->
-
-
-<hr>
-
-<!-- <div *ngIf="afAuth.user | async as user; else showLogin"> -->
-<!-- <h1 align="center">Hello {{ user.displayName }}!</h1>
-  <div class="button_cont" align="center"><a (click)="logout()" class="example_o">Logout</a></div> -->
-<!-- </div> -->
 <ng-template #showLogin>
-  <!-- <h1>Please login.</h1>
-  <button (click)="login()">Login with Google</button> -->
-  <!-- <div class="button_cont" align="center"><a (click)="login()" class="example_d" href="add-website-here" target="_blank" rel="nofollow noopener">Login with google</a></div> -->
 </ng-template>
-<!-- <li class="nav-item">
-  <a class="nav-link active" [routerLink]="['course/new']">Create course</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" [routerLink]="['lecturer/new']">Lecturer Register</a>
-</li> -->
 
 <router-outlet></router-outlet>
