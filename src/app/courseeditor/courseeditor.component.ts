@@ -21,12 +21,12 @@ export class CourseeditorComponent implements OnInit {
             time: new FormControl(''),
             hotCourse: new FormControl(''),
         });
-        this.courseCollection = db.collection('courses', ref => ref.where('name', '==', 'C#'));
-        this.partCollection = db.collection('parts', ref => ref.where('courseName', '==', 'C#').where('name', '==', 'Phần 1'));
+        this.courseCollection = db.collection('courses', ref => ref.where('name', '==', 'Java'));
+        this.partCollection = db.collection('parts', ref => ref.where('courseName', '==', 'Java').where('name', '==', 'Phần 1'));
         this.courses = this.courseCollection.valueChanges();
         this.parts = this.partCollection.valueChanges();
-        this.lessons = db.collection('parts', ref => ref.where('courseName', '==', 'C#'))
-            .doc('C#Part1').collection('lessons').valueChanges();
+        this.lessons = db.collection('parts', ref => ref.where('courseName', '==', 'Java'))
+            .doc('JavaPart1').collection('lessons').valueChanges();
     }
     private courseCollection: AngularFirestoreCollection<Course>;
     private partCollection: AngularFirestoreCollection<Part>;
@@ -39,7 +39,12 @@ export class CourseeditorComponent implements OnInit {
 
     addCourse() {
         console.log(this.courseForm.value);
-        this.courseCollection.add(this.courseForm.value);
+        this.courseCollection.add(this.courseForm.value).then(function () {
+            alert('create course success!');
+        })
+            .catch(function (error) {
+                alert(error);
+            });
     }
 }
 export interface Course {

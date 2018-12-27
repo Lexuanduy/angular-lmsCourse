@@ -20,8 +20,13 @@ export class LecturereditorComponent implements OnInit {
         const partsCollection = this._db.collection<Lecturer>('lecturers').doc(sUserId);
         partsCollection.set({
             name: sName, education: sEducation, experience: sExperience, position: sPosition,
-            lectureTime: sLecturerTime, active: 0
-        });
+            lectureTime: sLecturerTime, lecturerActive: false
+        }).then(function () {
+            alert('lecturer register succes.');
+        })
+            .catch(function (error) {
+                alert(error);
+            });
     }
 }
 export interface Lecturer {
@@ -31,4 +36,5 @@ export interface Lecturer {
     position: string;
     lectureTime: number;
     active: number;
+    lecturerActive: boolean;
 }

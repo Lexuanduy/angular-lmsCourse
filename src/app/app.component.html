@@ -50,20 +50,18 @@
                   <span>{{ user.displayName }}</span>
                 </a>
               </li>
-
+              <!-- <li>
+                <a [routerLink]="['lecturer/register']">
+                  <i class="icon-note icons"></i>
+                  <span>Register Lecturer</span>
+                </a>
+              </li>
               <li class="active current-page">
                 <a [routerLink]="['course/new']">
                   <i class="icon-note icons"></i>
                   <span>Create Course</span>
                 </a>
-              </li>
-              <li class="">
-                <a [routerLink]="['lecturer/register']">
-                  <i class="icon-note icons"></i>
-                  <span>Register Lecturer</span>
-                  <span class="fa fa-angle-down"></span>
-                </a>
-              </li>
+              </li> -->
             </ul>
           </div>
         </div>
@@ -167,7 +165,9 @@
       <div class="clearfix"></div>
       <div class="panel panel-default element-box-shadow">
 
+        <app-lecturereditor></app-lecturereditor>
         <app-courseeditor></app-courseeditor>
+
         <!-- <div class="col-md-6">
                   <h3 class="invoice-form-title text-bold margin_left_right_30">Shipping address</h3>
                   <form class="margin_left_right_30">

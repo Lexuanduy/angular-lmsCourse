@@ -2,9 +2,18 @@
   border-radius: .25rem;
 }
 
+.course-title {
+  font-family: cursive;
+  margin-bottom: 30px;
+  font-size: 40px;
+  color: blue;
+}
+
 h4 {
   font-family: cursive;
   color: brown;
+  margin-bottom: 20px;
+  font-size: 27px;
 }
 
 .formLesson {
@@ -14,16 +23,40 @@ h4 {
 h5 {
   font-family: cursive;
   color: chocolate;
+  font-size: 20px;
 }
 
-.btn-outline-dark,
-.btn-outline-primary {
-  width: 140px;
+.add-course {
+  width: 150px;
 }
 
-.btn-outline-info {
-  width: 308px;
-  margin-left: 123px;
+.btn-danger,
+.btn-primary {
+  width: 42px;
+  margin-bottom: 5px;
+}
+
+.btn-warning {
+  width: 42px;
+}
+
+.btn-info {
+  width: 42px;
+  margin-left: 186px;
+}
+
+.save {
+  width: 60px;
+  margin-right: 5px;
+}
+
+.formLesson {
+  margin-bottom: 5px;
+}
+
+.appPart {
+  padding-left: 125px;
+  padding-right: 60px;
 }
 
 .error {
@@ -33,4 +66,16 @@ h5 {
 
 label.error {
   display: inline;
+}
+
+.form-control-label {
+  float: left;
+}
+
+.margin_left_right_30 {
+  margin-bottom: 30px;
+}
+
+.myForm {
+  margin-bottom: 15px;
 }

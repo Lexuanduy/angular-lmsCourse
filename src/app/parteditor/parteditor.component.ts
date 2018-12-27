@@ -62,10 +62,18 @@ export class ParteditorComponent implements OnInit {
         this.phoneForms.removeAt(i);
     }
     addPart(sPartId: string, sCourseId: string, sName: string, sDescription: string, sLessonId: string, sLessonName: string,
-        sLessonDescription: string) {
+        sLessonDescription: string, sLinkVideo: string) {
         const partsCollection = this._db.collection<Part>('parts').doc(sPartId);
         partsCollection.set({ courseName: sCourseId, name: sName, description: sDescription });
-        partsCollection.collection('lessons').doc(sLessonId).set({ name: sLessonName, description: sLessonDescription });
+        partsCollection.collection('lessons').doc(sLessonId).set({
+            name: sLessonName, description: sLessonDescription,
+            linkvideo: sLinkVideo
+        }).then(function() {
+            alert('save success!');
+        })
+            .catch(function(error) {
+                alert(error);
+            });
     }
 }
 

@@ -1,91 +1,45 @@
-<!-- Main Content -->
-<div class="container">
-  <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto"></div>
-    <!-- <div class="control-group">
-      <div class="form-group floating-label-form-group controls">
-        <label>Lecturer Name</label>
-        <input type="text" #name class="form-control" placeholder="Lecturer Name" required data-validation-required-message="Please enter lecturer name.">
-        <p class="help-block text-danger"></p>
+<div class="col-md-12">
+  <h3 class="invoice-form-title text-bold margin_left_right_30">Form Create Lecturer</h3>
+  <div class="margin_left_right_30">
+    <fieldset>
+      <h3 class="course-title">Lecturer Rigister</h3>
+      <div class="form-group">
+        <label for="inputName" class="form-control-label">Lecturer Name</label>
+        <input class="form-control input-type-1" id="name" name="name" placeholder="Lecturer Name" type="text" #name>
       </div>
-    </div> -->
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">Lecturer Name</span>
-      </div>
-      <input type="text" class="form-control" aria-describedby="basic-addon1" #name>
-    </div>
 
-    <!-- <div class="control-group">
-      <div class="form-group floating-label-form-group controls">
-        <label>Email</label>
-        <input type="text" #userId class="form-control" placeholder="Lecturer Email" required data-validation-required-message="Please enter lecturer email.">
-        <p class="help-block text-danger"></p>
+      <div class="form-group">
+        <label for="inputStreet" class="form-control-label">Lecturer Email</label>
+        <input class="form-control input-type-1" id="email" placeholder="Lecturer Email" type="text" #userId>
       </div>
-    </div> -->
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">Lecturer Email</span>
-      </div>
-      <input type="text" class="form-control" aria-describedby="basic-addon1" #userId>
-    </div>
 
-    <!-- <div class="control-group">
-      <div class="form-group floating-label-form-group controls">
-        <label>Lecturer Education</label>
-        <input type="text" #education class="form-control" placeholder="Lecturer Edcation" required data-validation-required-message="Please enter lecturer education.">
-        <p class="help-block text-danger"></p>
+      <div class="form-group">
+        <label for="inputCity" class="form-control-label">Lecturer Education</label>
+        <input class="form-control input-type-1" id="education" placeholder="Education" type="text" #education>
       </div>
-    </div> -->
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">Lecturer Education</span>
-      </div>
-      <input type="text" class="form-control" aria-describedby="basic-addon1" #education>
-    </div>
 
-    <!-- <div class="control-group">
-      <div class="form-group floating-label-form-group controls">
-        <label>Lecturer Experience</label>
-        <input type="text" #experience class="form-control" placeholder="Lecturer Experience" required data-validation-required-message="Please enter lecturer experience.">
-        <p class="help-block text-danger"></p>
+      <div class="form-group">
+        <label for="inputState" class="form-control-label">Lecturer Experience</label>
+        <input class="form-control input-type-1" id="experience" placeholder="experience" type="text" #experience>
       </div>
-    </div> -->
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">Lecturer Experience</span>
-      </div>
-      <input type="text" class="form-control" aria-describedby="basic-addon1" #experience>
-    </div>
 
-    <!-- <div class="control-group">
-      <div class="form-group floating-label-form-group controls">
-        <label>Lecturer Position</label>
-        <input type="text" #position class="form-control" placeholder="Lecturer Position" required data-validation-required-message="Please enter lecturer position.">
-        <p class="help-block text-danger"></p>
+      <div class="form-group">
+        <label for="inputPostCode" class="form-control-label">Lecturer Position</label>
+        <input class="form-control input-type-1" id="position" placeholder="position" type="text" #position>
       </div>
-    </div> -->
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">Lecturer Position</span>
-      </div>
-      <input type="text" class="form-control" aria-describedby="basic-addon1" #position>
-    </div>
 
-    <!-- <div class="control-group">
-      <div class="form-group floating-label-form-group controls">
-        <label>Lecturer Time</label>
-        <input type="text" #lectureTime class="form-control" placeholder="Lecturer Time" required data-validation-required-message="Please enter lecturer time.">
-        <p class="help-block text-danger"></p>
+      <div class="form-group">
+        <label for="inputPostCode" class="form-control-label">Number of hours taught</label>
+        <input class="form-control input-type-1" id="time" placeholder="Number of class hours of the course" type="number" min="100"
+          #lectureTime>
       </div>
-    </div> -->
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">Number of hours taught</span>
+      <div class="form-group">
+        <div class="form-group">
+          <button type="submit" (click)="addLecturer( userId.value, name.value, education.value, experience.value, position.value, lectureTime.value)"
+            class="btn btn-success">Save</button>
+          <!-- <button class="btn btn-success" (click)="addLecturer( userId.value, name.value, education.value, experience.value, position.value, lectureTime.value)">Save</button> -->
+        </div>
       </div>
-      <input type="number" min="100" class="form-control" aria-describedby="basic-addon1" #lectureTime>
-    </div>
-
-    <button class="btn btn-success" (click)="addLecturer( userId.value, name.value, education.value, experience.value, position.value, lectureTime.value)">Save</button>
+    </fieldset>
   </div>
 </div>
