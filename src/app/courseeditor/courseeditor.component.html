@@ -6,6 +6,17 @@
         <fieldset>
           <h3 class="course-title">Create Course</h3>
           <div class="form-group">
+            <select formControlName="category" id="category">
+              <option value="" >- Select Category -</option>
+              <option *ngFor="let category of categories | async" [value]="category.id" selected>{{category.name}}</option>
+            </select>
+          </div>
+          <!-- <div class="form-group">
+            <label for="inputName" class="form-control-label">Category</label>
+            <input class="form-control input-type-1" formControlName="category" id="category" name="category" placeholder="category"
+              type="text">
+          </div> -->
+          <div class="form-group">
             <label for="inputName" class="form-control-label">Name Course</label>
             <input class="form-control input-type-1" formControlName="name" id="name" name="name" placeholder="Name Course" type="text">
           </div>
@@ -27,13 +38,17 @@
           </div>
           <div class="form-group">
             <label for="inputPostCode" class="form-control-label">Number of hours of the course</label>
-            <input class="form-control input-type-1" formControlName="time" id="time" placeholder="Number of class hours of the course"
+            <input class="form-control input-type-1" formControlName="hours" id="hours" placeholder="Number of class hours of the course"
               type="number" min="1">
           </div>
           <div class="form-group">
             <label for="inputPostCode" class="form-control-label">Hot Course</label>
-            <input class="form-control input-type-1" formControlName="hotCourse" id="time" placeholder="If it's hot course fill 1 and not is 0"
+            <input class="form-control input-type-1" formControlName="hotCourse" id="hotCourse" placeholder="If it's hot course fill 1 and not is 0"
               type="number" min="0" max="1">
+          </div>
+          <div class="form-group">
+            <label for="inputPostCode" class="form-control-label">Link image course</label>
+            <input class="form-control input-type-1" formControlName="img" id="hotCourse" placeholder="link image course" type="text">
           </div>
           <div class="form-group">
             <div class="form-group">
