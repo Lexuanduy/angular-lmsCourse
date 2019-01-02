@@ -13,7 +13,7 @@ export class CategoryService {
       return categories.map(a => {
         const value = a.payload.doc.data;
         const key = a.payload.doc;
-        alert(a.payload.doc.data.name);
+        // alert(a.payload.doc.data.toString);
         return {key, ...value};
       });
     }));

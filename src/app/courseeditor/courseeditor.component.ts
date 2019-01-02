@@ -11,9 +11,9 @@ import { CategoryService } from 'src/app/category.service';
     styleUrls: ['./courseeditor.component.css']
 })
 export class CourseeditorComponent implements OnInit {
-    // categories$;
+    //  categories$;
     constructor(db: AngularFirestore, public categoryService: CategoryService) {
-        // this.categories$ = categoryService.getCategories();
+        //  this.categories$ = categoryService.getCategories();
         this.courseForm = new FormGroup({
             category: new FormControl(''),
             name: new FormControl(''),
