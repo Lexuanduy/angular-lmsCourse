@@ -16,6 +16,7 @@ export class CourseeditorComponent implements OnInit {
         //  this.categories$ = categoryService.getCategories();
         this.courseForm = new FormGroup({
             category: new FormControl(''),
+            url: new FormControl(''),
             name: new FormControl(''),
             author: new FormControl(''),
             price: new FormControl(''),
@@ -60,6 +61,7 @@ export interface Category {
 }
 export interface Course {
     category: string;
+    url: string;
     name: string;
     author: string;
     price: string;

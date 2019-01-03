@@ -67,7 +67,7 @@ export class ParteditorComponent implements OnInit {
         partsCollection.set({ courseName: sCourseId, name: sName, description: sDescription });
         partsCollection.collection('lessons').doc(sLessonId).set({
             name: sLessonName, description: sLessonDescription,
-            linkvideo: sLinkVideo
+            linkVideo: sLinkVideo
         }).then(function() {
             alert('save success!');
         })
