@@ -64,7 +64,7 @@ export class ParteditorComponent implements OnInit {
     addPart(sPartId: string, sCourseId: string, sName: string, sDescription: string, sLessonId: string, sLessonName: string,
         sLessonDescription: string, sLinkVideo: string) {
         const partsCollection = this._db.collection<Part>('parts').doc(sPartId);
-        partsCollection.set({ courseName: sCourseId, name: sName, description: sDescription });
+        partsCollection.set({ id: sPartId, courseName: sCourseId, name: sName, description: sDescription });
         partsCollection.collection('lessons').doc(sLessonId).set({
             name: sLessonName, description: sLessonDescription,
             linkVideo: sLinkVideo
@@ -78,6 +78,7 @@ export class ParteditorComponent implements OnInit {
 }
 
 export interface Part {
+    id: string;
     courseName: string;
     name: string;
     description: string;

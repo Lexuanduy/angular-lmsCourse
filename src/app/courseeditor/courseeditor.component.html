@@ -6,7 +6,7 @@
         <fieldset>
           <h3 class="course-title">Create Course</h3>
           <div class="form-group">
-            <select formControlName="category-name" id="category-name">
+            <select id="category-name">
               <option value="">- Category -</option>
               <option *ngFor="let category of categories | async" [value]="category.id" selected>{{category.name}}</option>
               <!-- <option *ngFor="let category of categories$ | async" [value]="category.key" selected>{{category.value.name}}</option> -->
