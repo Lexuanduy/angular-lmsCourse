@@ -20,6 +20,7 @@ export class CourseeditorComponent implements OnInit {
             name: new FormControl(''),
             author: new FormControl(''),
             price: new FormControl(''),
+            priceUnit: new FormControl(''),
             description: new FormControl(''),
             lecturerId: new FormControl(''),
             hours: new FormControl(''),
@@ -61,10 +62,12 @@ export interface Category {
 }
 export interface Course {
     category: string;
+    id: string;
     url: string;
     name: string;
     author: string;
     price: string;
+    priceUnit: string;
     description: string;
     lecturerId: string;
     hours: string;
